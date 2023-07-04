@@ -21,15 +21,15 @@
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
           >Shop All</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="/shop/electric-scooters"
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
-          >Electric Scooters</a
+          >Electric Scooters</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="/shop/accessories"
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
-          >Accessories</a
+          >Accessories</NuxtLink
         >
         <a
           href="#"
@@ -44,9 +44,9 @@
       </PopoverGroup>
 
       <div class="flex lg:flex-1 justify-center">
-        <a href="#" class="-m-1.5 p-1.5">
+        <NuxtLink to="/" class="-m-1.5 p-1.5">
           <img class="lg:h-12 h-8 w-auto" src="/img/logo-regular.png" alt="" />
-        </a>
+        </NuxtLink>
       </div>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -212,15 +212,17 @@
                 @click="mobileMenuOpen = false"
                 >Shop All</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/shop/electric-scooters"
                 class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Electric Scooters</a
+                @click="mobileMenuOpen = false"
+                >Electric Scooters</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/shop/accessories"
                 class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Accessories</a
+                @click="mobileMenuOpen = false"
+                >Accessories</NuxtLink
               >
               <a
                 href="#"

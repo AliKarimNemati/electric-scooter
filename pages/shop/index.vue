@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { useProductStore } from "../store/index";
+import { useProductStore } from "../../store/index";
 import { ref } from "vue";
 import {
   Listbox,
