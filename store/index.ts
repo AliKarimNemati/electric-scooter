@@ -25,9 +25,9 @@ export const useCartStore = defineStore('CartStore', () => {
     isCartOpen.value = false
   }
 
-  function addToCart(product: object) {
+  function addToCart(product: any) {
     let newCartProduct = { ...product, count: 1 }
-    let currentproduct = cartProducts.value.find(p => p.id == product.id)
+    let currentproduct = cartProducts.value.find((p:any) => p.id == product.id)
 
     if (currentproduct) {
       currentproduct.count++
@@ -39,7 +39,7 @@ export const useCartStore = defineStore('CartStore', () => {
   }
 
   function removeFromCart(id: number) {
-    cartProducts.value = cartProducts.value.filter((prod) => {
+    cartProducts.value = cartProducts.value.filter((prod:any) => {
       return prod.id !== id
     })
     localStorage.setItem('cart', JSON.stringify(cartProducts.value))
@@ -47,14 +47,14 @@ export const useCartStore = defineStore('CartStore', () => {
   }
 
   function plusCount(id: number) {
-    let product = cartProducts.value.find((prod) => prod.id === id)
+    let product = cartProducts.value.find((prod:any) => prod.id === id)
     product.count++
     localStorage.setItem('cart', JSON.stringify(cartProducts.value))
 
   }
 
   function minusCount(id: number) {
-    let product = cartProducts.value.find((prod) => prod.id === id)
+    let product = cartProducts.value.find((prod:any) => prod.id === id)
     if (product.count == 1) {
       removeFromCart(id)
     } else {
@@ -70,7 +70,7 @@ export const useCartStore = defineStore('CartStore', () => {
 
   function calSum() {
     let sum = 0;
-    cartProducts.value.forEach(p => {
+    cartProducts.value.forEach((p:any) => {
       sum = sum + (p.price * p.count)
     })
     return sum;
@@ -78,7 +78,7 @@ export const useCartStore = defineStore('CartStore', () => {
 
   function getCountOfCart() {
     let sum = 0;
-    cartProducts.value.forEach(p => {
+    cartProducts.value.forEach((p:any) => {
       sum = sum + p.count
     })
     return sum;
