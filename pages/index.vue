@@ -16,7 +16,11 @@
 <script setup>
 import { useProductStore } from "../store/index";
 
-const { products } = useProductStore();
+const store = useProductStore();
+
+let products = ref(store.products.filter(p => p.discount == true))
+
+
 
 
 </script>

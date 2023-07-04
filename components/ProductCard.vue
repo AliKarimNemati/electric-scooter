@@ -7,6 +7,7 @@
       <img :src="product.src" alt="product.name" />
       <div
         class="absolute top-1 left-2 shadow-md py-1 px-2 bg-white rounded-2xl text-gray-500"
+        v-if="product.discount"
       >
         sale!
       </div>
@@ -85,7 +86,7 @@
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-star"
+            class="bi bi-star text-gray-300"
             viewBox="0 0 16 16"
             v-for="(i) in 5-product.rate"
             :key="i"
@@ -96,7 +97,8 @@
           </svg>
         </div>
         <NuxtLink to="/" class="font-bold">{{ product.name }}</NuxtLink>
-        <p class="font-bold text-sm text-gray-500">${{ product.price }}</p>
+        <p class="font-bold text-sm text-gray-500" v-if="!product.discount">${{ product.price + '.00' }}</p>
+        <p class="font-bold text-sm text-gray-500" v-if="product.discount"><span class="text-gray-300" style="text-decoration: line-through;">${{ product.realPrice + '.00' }}</span> ${{ product.price + '.00' }}</p>
       </div>
     </div>
   </div>

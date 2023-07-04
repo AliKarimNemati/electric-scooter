@@ -16,10 +16,10 @@
       </div>
 
       <PopoverGroup class="hidden lg:flex lg:gap-x-8">
-        <a
-          href="#"
+        <NuxtLink
+          to="/shop"
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
-          >Shop All</a
+          >Shop All</NuxtLink
         >
         <a
           href="#"
@@ -48,21 +48,37 @@
           <img class="lg:h-12 h-8 w-auto" src="/img/logo-regular.png" alt="" />
         </a>
       </div>
-    
+
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <input
-          type="search"
-          class="border mr-2 rounded-sm h-10 border-gray-300 w-2/5 p-2 py-3 outline-none focus:border-gray-500"
-          placeholder="Search products…"
-        />
-        <button
-          class="bg-red-700 w-8 text-white rounded-md hover:bg-black hover:text-white"
+        <div class="w-2/5 mr-2">
+          <input
+            type="search"
+            class="border rounded-sm h-10 border-gray-300 w-full p-2 py-3 outline-none focus:border-gray-500"
+            placeholder="Search products…"
+            list="searchResult"
+            v-model="isSearching"
+          />
+          <datalist
+            id="searchResult"
+            class="w-full"
+            v-if="isSearching.length > 0"
+          >
+            <option
+              v-for="product in productStore.products"
+              :key="product.id"
+              :value="product.name"
+            />
+          </datalist>
+        </div>
+        <NuxtLink
+          class="bg-red-700 w-8 text-white rounded-md hover:bg-black hover:text-white h-10"
+          :to="isSearching ? '/search/' + isSearching : '/'"
         >
           <svg
             aria-hidden="true"
             role="img"
             focusable="false"
-            class="text-white mx-auto"
+            class="text-white mx-auto h-full"
             xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
@@ -70,13 +86,13 @@
           >
             <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"></path>
           </svg>
-        </button>
+        </NuxtLink>
 
         <button>
           <svg
             version="1.1"
             class="w-4 ml-5"
-            :class="{'mt-[12px]':store.getCountOfCart() != 0}"
+            :class="{ 'mt-[12px]': store.getCountOfCart() != 0 }"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px"
@@ -92,13 +108,13 @@
           </svg>
         </button>
       </div>
-      <button
-        class="text-red-700"
-        @click="
-          store.openCart();
-        "
-      >
-      <p class="ml-8 bg-red-700 text-white w-[18px] h-[18px] rounded-full text-xs font-bold mb-[-6px]" :class="{'hidden':store.getCountOfCart() == 0}">{{store.getCountOfCart()}}</p>
+      <button class="text-red-700" @click="store.openCart()">
+        <p
+          class="ml-8 bg-red-700 text-white w-[18px] h-[18px] rounded-full text-xs font-bold mb-[-6px]"
+          :class="{ hidden: store.getCountOfCart() == 0 }"
+        >
+          {{ store.getCountOfCart() }}
+        </p>
         <svg
           class="ml-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -161,32 +177,40 @@
                 <circle cx="60" cy="33.8" r="30"></circle>
               </svg>
             </button>
-            <input
-              type="search"
-              class="border ml-4 mr-2 rounded-sm h-10 border-gray-300 w-4/5 p-2 py-3 outline-none focus:border-gray-500"
-              placeholder="Search products…"
-            />
-            <button
-              class="bg-red-700 w-8 h-10 text-white rounded-md hover:bg-black hover:text-white align-middle mb-2"
-            >
-              <svg
-                aria-hidden="true"
-                role="img"
-                focusable="false"
-                class="text-white mx-auto"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
+            <div class="flex">
+              <input
+                type="search"
+                class="border ml-4 mr-2 rounded-sm h-10 border-gray-300 w-4/5 p-2 py-3 outline-none focus:border-gray-500"
+                placeholder="Search products…"
+                v-model="isSearching"
+                list="searchResult"
+              />
+
+              <NuxtLink
+                class="bg-red-700 w-8 h-10 text-white rounded-md hover:bg-black hover:text-white align-middle mb-2"
+                :to="isSearching ? '/search/' + isSearching : '/'"
+                @click="mobileMenuOpen = false"
               >
-                <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"></path>
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  role="img"
+                  focusable="false"
+                  class="text-white mx-auto h-10"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"></path>
+                </svg>
+              </NuxtLink>
+            </div>
             <div class="space-y-2 my-6 bg-slate-100">
-              <a
-                href="#"
+              <NuxtLink
+                to="/shop"
                 class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Shop All</a
+                @click="mobileMenuOpen = false"
+                >Shop All</NuxtLink
               >
               <a
                 href="#"
@@ -213,99 +237,6 @@
         </div>
       </DialogPanel>
     </Dialog>
-
-    <!-- cart
-    <Dialog
-      as="div"
-      @close="cartOpen = false"
-      :open="cartOpen"
-    >
-      <div class="fixed inset-0 z-10 h-screen" />
-      <DialogPanel
-        class="fixed ml-auto right-0 inset-y-0 w-3/4 left-0 z-10 overflow-y-auto bg-white py-3 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-      >
-        <div class="flex m-3 items-center justify-end">
-          <button
-            type="button"
-            class="rounded-md text-gray-700"
-            @click="cartOpen = false"
-          >
-            <span class="sr-only">Close menu</span>
-            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="divide-y divide-gray-500/10">
-            <button class="mb-5 w-full">
-              <svg
-                version="1.1"
-                class="w-4 ml-5"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 120 120"
-                enable-background="new 0 0 120 120"
-                xml:space="preserve"
-              >
-                <path
-                  d="M84.6,62c-14.1,12.3-35.1,12.3-49.2,0C16.1,71.4,3.8,91,3.8,112.5c0,2.1,1.7,3.8,3.8,3.8h105c2.1,0,3.8-1.7,3.8-3.8 C116.2,91,103.9,71.4,84.6,62z"
-                ></path>
-                <circle cx="60" cy="33.8" r="30"></circle>
-              </svg>
-            </button>
-            <input
-              type="search"
-              class="border ml-4 mr-2 rounded-sm h-10 border-gray-300 w-4/5 p-2 py-3 outline-none focus:border-gray-500"
-              placeholder="Search products…"
-            />
-            <button
-              class="bg-red-700 w-8 h-10 text-white rounded-md hover:bg-black hover:text-white align-middle mb-2"
-            >
-              <svg
-                aria-hidden="true"
-                role="img"
-                focusable="false"
-                class="text-white mx-auto"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-              >
-                <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"></path>
-              </svg>
-            </button>
-            <div class="space-y-2 my-6 bg-slate-100">
-              <a
-                href="#"
-                class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Shop All</a
-              >
-              <a
-                href="#"
-                class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Electric Scooters</a
-              >
-              <a
-                href="#"
-                class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Accessories</a
-              >
-              <a
-                href="#"
-                class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >About</a
-              >
-              <a
-                href="#"
-                class="border-y-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Contact</a
-              >
-            </div>
-          </div>
-        </div>
-      </DialogPanel>
-    </Dialog> -->
     <Cart v-if="store.isCartOpen" />
   </header>
 </template>
@@ -337,9 +268,11 @@ import {
   PlayCircleIcon,
 } from "@heroicons/vue/20/solid";
 
-import {useCartStore} from '../store/index'
+import { useCartStore, useProductStore } from "../store/index";
 import { log } from "console";
-const store = useCartStore()
+const store = useCartStore();
+const productStore = useProductStore();
+let isSearching = ref("");
 
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
@@ -349,7 +282,7 @@ const callsToAction = [
 const mobileMenuOpen = ref(false);
 const cartOpen = ref(false);
 
-onMounted(()=>{
-  store.setToCart()
-})
+onMounted(() => {
+  store.setToCart();
+});
 </script>
