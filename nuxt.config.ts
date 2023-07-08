@@ -19,5 +19,6 @@ export default defineNuxtConfig({
 
     modules: [
         '@pinia/nuxt',
+        '@vite-pwa/nuxt'
     ],
 })
