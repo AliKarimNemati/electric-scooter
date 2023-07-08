@@ -31,15 +31,15 @@
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
           >Accessories</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="/about"
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
-          >About</a
+          >About</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="/contact"
           class="text-sm font-semibold leading-6 text-gray-900 hover:text-red-700"
-          >Contact</a
+          >Contact</NuxtLink
         >
       </PopoverGroup>
 
@@ -224,15 +224,15 @@
                 @click="mobileMenuOpen = false"
                 >Accessories</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/about"
                 class="border-t-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >About</a
+                >About</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/contact"
                 class="border-y-2 border-gray-200 block py-3 px-6 text-base font-semibold leading-7 text-gray-500 hover:bg-gray-50"
-                >Contact</a
+                >Contact</NuxtLink
               >
             </div>
           </div>

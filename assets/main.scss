@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+    color: white;
+    background: #c93535;
+}
+
 svg {
     fill: currentColor;
 }
@@ -35,7 +40,7 @@ body {
 }
 
 .about-us-background-img {
-    background-image: url('../public/img/bg-03.jpg');
+    background-image: url('/img/bg-03.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
@@ -47,13 +52,25 @@ body {
 }
 
 .why-choose-us-background-img {
-    background-image: url('../public/img/bg-02.jpg');
+    background-image: url('/img/bg-02.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
 
 @media (max-width: 1020px) {
     .why-choose-us-background-img{
+        background-attachment: unset;
+    }
+}
+
+.about-background-img {
+    background-image: url('/img/bg-04-1.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+@media (max-width: 1020px) {
+    .about-background-img{
         background-attachment: unset;
     }
 }

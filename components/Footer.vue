@@ -59,11 +59,11 @@
       </div>
       <div class="lg:w-1/5 md:w-2/5 font-semibold lg:mt-[0px] mt-[50px] w-full">
         <h2 class="font-bold lg:text-lg text-base md:mb-[42px] mb-9">Useful links</h2>
-        <div><NuxtLink to="#" class="text-red-700">Shop All</NuxtLink></div>
-        <div><NuxtLink to="#" class="text-red-700">Electric Scooters</NuxtLink></div>
-        <div><NuxtLink to="#" class="text-red-700">Accessories</NuxtLink></div>
-        <div><NuxtLink to="#" class="text-red-700">About</NuxtLink></div>
-        <div><NuxtLink to="#" class="text-red-700">Contact</NuxtLink></div>
+        <div><NuxtLink to="/shop" class="text-red-700">Shop All</NuxtLink></div>
+        <div><NuxtLink to="/shop/electric-scooters" class="text-red-700">Electric Scooters</NuxtLink></div>
+        <div><NuxtLink to="/shop/accessories" class="text-red-700">Accessories</NuxtLink></div>
+        <div><NuxtLink to="/about" class="text-red-700">About</NuxtLink></div>
+        <div><NuxtLink to="/contact" class="text-red-700">Contact</NuxtLink></div>
       </div>
       <div class="lg:w-1/5 md:w-2/5 lg:mt-[0px] mt-[50px] w-full">
         <h2 class="font-bold lg:text-lg text-base md:mb-[42px] mb-9">Sign up for special offers</h2>
