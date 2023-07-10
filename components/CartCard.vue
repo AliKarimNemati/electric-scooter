@@ -5,7 +5,7 @@
         <img :src="product.src" class="w-14 h-14" />
       </div>
       <div>
-        <p>{{ product.name }}</p>
+        <NuxtLink :to="'/shop/' + product.id">{{ product.name }}</NuxtLink>
         <div
           class="border p-2 flex justify-between w-24 h-8 text-gray-600"
           style="align-items: center"

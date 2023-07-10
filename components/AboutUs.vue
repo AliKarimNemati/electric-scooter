@@ -56,20 +56,33 @@
       <p class="text-gray-600 text-center">MARIA OLIVER</p>
     </div>
 
-    <div class="grid grid-cols-12 p-[25px] pb-[60px] bg-[#f4fafc]">
-      <div class="md:col-span-6 col-span-12 md:text-start text-center md:pr-[50px] md:pb-[0px] pb-[20px]">
-        <h2 class="md:text-[44px] text-[34px] font-bold">Shop Electric Scooter Accessories</h2>
-        <p class="text-gray-600 mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
-        </p>
-        <PrimaryBtn content="Shop Accessories" />
-      </div>
-      <div class="md:col-span-6 col-span-12">
-        <div class="bg-[#fceade] p-[40px] md:mt-[-86px]" style="box-shadow: 50px 50px 50px -25px rgba(0,0,0,.15);">
-          <div class="md:ml-[-78px]">
-            <img src="/img/accessories-01.png" alt="" />
+    <div class="p-[25px] pb-[60px] bg-[#f4fafc]">
+      <div class="grid grid-cols-12 max-w-[1140px] mx-auto">
+        <div
+          class="md:col-span-6 col-span-12 md:text-start text-center md:pr-[50px] md:pb-[0px] pb-[20px]"
+        >
+          <div class="flex flex-col justify-center h-full">
+            <h2 class="md:text-[44px] text-[34px] font-bold">
+              Shop Electric Scooter Accessories
+            </h2>
+            <p class="text-gray-600 mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </p>
+            <div>
+              <PrimaryBtn content="Shop Accessories" />
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-6 col-span-12">
+          <div
+            class="bg-[#fceade] p-[40px] md:mt-[-86px]"
+            style="box-shadow: 50px 50px 50px -25px rgba(0, 0, 0, 0.15)"
+          >
+            <div class="md:ml-[-78px]">
+              <img src="/img/accessories-01.png" alt="" />
+            </div>
           </div>
         </div>
       </div>

@@ -24,8 +24,11 @@ export const useProductStore = defineStore('ProductStore', () => {
     { id: 18, src: '/img/product-16-a-400x525.jpg', name: 'Unbeatable Lock 100', price: 69.00, rate: 4 , type: 'lock', discount:true, realPrice: 80.00 },  
   ]
 
+  function getProductById(id:number) {
+    return products.value.find((product:any) => product.id == id)
+  }
 
-  return { products }
+  return { products, getProductById }
 })
 
 export const useCartStore = defineStore('CartStore', () => {
@@ -41,7 +44,7 @@ export const useCartStore = defineStore('CartStore', () => {
   }
 
   function addToCart(product: any) {
-    let newCartProduct = { ...product, count: 1 }
+    let newCartProduct = product.count > 1 ? product :{ ...product, count: 1 }
     let currentproduct = cartProducts.value.find((p:any) => p.id == product.id)
 
     if (currentproduct) {
@@ -99,6 +102,11 @@ export const useCartStore = defineStore('CartStore', () => {
     return sum;
   }
 
+  function getProductById(id: number) {
+    return cartProducts.value.find((p:any) => p.id == id)
+  }
+
+
   return {
     openCart,
     closeCart,
@@ -110,6 +118,7 @@ export const useCartStore = defineStore('CartStore', () => {
     minusCount,
     calSum,
     getCountOfCart,
-    setToCart
+    setToCart,
+    getProductById
   }
 })

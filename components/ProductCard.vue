@@ -96,9 +96,10 @@
             />
           </svg>
         </div>
-        <NuxtLink to="/" class="font-bold">{{ product.name }}</NuxtLink>
+        <NuxtLink :to="'/shop/' + product.id" class="font-bold">{{ product.name }}</NuxtLink>
         <p class="font-bold text-sm text-gray-500" v-if="!product.discount">${{ product.price + '.00' }}</p>
         <p class="font-bold text-sm text-gray-500" v-if="product.discount"><span class="text-gray-300" style="text-decoration: line-through;">${{ product.realPrice + '.00' }}</span> ${{ product.price + '.00' }}</p>
+        
       </div>
     </div>
   </div>
