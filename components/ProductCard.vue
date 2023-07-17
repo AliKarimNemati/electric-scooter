@@ -42,7 +42,7 @@
               ></path>
             </svg>
           </li>
-          <li class="cursor-pointer flex">
+          <li class="cursor-pointer flex" @click="isQuickView = true">
             <span
               class="text-white h-6 text-xs mt-2 mr-2 hidden"
               style="align-self: center"
@@ -72,7 +72,7 @@
             height="16"
             fill="currentColor"
             viewBox="0 0 16 16"
-            v-for="(i) in product.rate"
+            v-for="i in product.rate"
             :key="i"
             class="text-yellow-500"
           >
@@ -88,7 +88,7 @@
             fill="currentColor"
             class="bi bi-star text-gray-300"
             viewBox="0 0 16 16"
-            v-for="(i) in 5-product.rate"
+            v-for="i in 5 - product.rate"
             :key="i"
           >
             <path
@@ -96,18 +96,33 @@
             />
           </svg>
         </div>
-        <NuxtLink :to="'/shop/' + product.id" class="font-bold">{{ product.name }}</NuxtLink>
-        <p class="font-bold text-sm text-gray-500" v-if="!product.discount">${{ product.price + '.00' }}</p>
-        <p class="font-bold text-sm text-gray-500" v-if="product.discount"><span class="text-gray-300" style="text-decoration: line-through;">${{ product.realPrice + '.00' }}</span> ${{ product.price + '.00' }}</p>
-        
+        <NuxtLink :to="'/shop/' + product.id" class="font-bold">{{
+          product.name
+        }}</NuxtLink>
+        <p class="font-bold text-sm text-gray-500" v-if="!product.discount">
+          ${{ product.price + ".00" }}
+        </p>
+        <p class="font-bold text-sm text-gray-500" v-if="product.discount">
+          <span class="text-gray-300" style="text-decoration: line-through"
+            >${{ product.realPrice + ".00" }}</span
+          >
+          ${{ product.price + ".00" }}
+        </p>
       </div>
     </div>
   </div>
+  <productQuickView :product="product" :closeQuickView="closeQuickView" v-if="isQuickView" />
 </template>
 
 <script setup lang="ts">
-import { useCartStore } from '../store/index'
-const store = useCartStore()
+import { useCartStore } from "../store/index";
+const store = useCartStore();
+
+let isQuickView = ref(false);
+
+function closeQuickView() {
+  isQuickView.value = false
+}
 
 defineProps({
   product: {
@@ -115,7 +130,4 @@ defineProps({
     default: {},
   },
 });
-
-
-
 </script>

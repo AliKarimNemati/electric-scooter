@@ -10,14 +10,20 @@
           class="border p-2 flex justify-between w-24 h-8 text-gray-600"
           style="align-items: center"
         >
-          <span class="cursor-pointer" @click="store.minusCount(product.id)">-</span>
+          <span class="cursor-pointer" @click="store.minusCount(product.id)"
+            >-</span
+          >
           <span>{{ product.count }}</span>
-          <span class="cursor-pointer" @click="store.plusCount(product.id)">+</span>
+          <span class="cursor-pointer" @click="store.plusCount(product.id)"
+            >+</span
+          >
         </div>
       </div>
     </div>
-    <div class="flex flex-col" style="align-items: end;">
-      <div class="border border-gray-400 rounded-full  w-5 h-5 cursor-pointer hover:border-black">
+    <div class="flex flex-col" style="align-items: end">
+      <div
+        class="border border-gray-400 rounded-full w-5 h-5 cursor-pointer hover:border-black"
+      >
         <svg
           class="text-gray-400 w-5 h-5 p-[2px] hover:text-black"
           fill="currentColor"
@@ -33,16 +39,16 @@
           ></path>
         </svg>
       </div>
-
-      <p class="text-gray-600">${{product.price}}</p>
+      
+      <p class="text-gray-600">${{ product.price }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {useCartStore} from "../store/index";
+import { useCartStore } from "../store/index";
 
-const store = useCartStore()
+const store = useCartStore();
 defineProps({
   product: {
     type: Object,
