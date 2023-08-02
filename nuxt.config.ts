@@ -19,11 +19,11 @@ export default defineNuxtConfig({
 
     modules: [
         '@pinia/nuxt',
-        '@vite-pwa/nuxt'
+        '@vite-pwa/nuxt',
     ],
 
     pwa: {
-        manifest:{
+        manifest: {
             name: "electric_scooter",
             short_name: "electric_scooter",
             description: "you can buy any electric scooter"

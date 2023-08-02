@@ -28,7 +28,7 @@
         </div>
         <div class="lg:justify-start flex mt-20 justify-center">
           <p class="my-auto mr-3 text-gray-500">$750.00</p>
-          <PrimaryBtn content="Add to cart" @click="store.addToCart({ id: 5, src: '/img/product-02-a-400x525.jpg', name: 'Libero X250', price: 750.00, rate: 4, type: 'scooter', discount:false })" />
+          <PrimaryBtn content="Add to cart" @click="store.addToCart({ id: 5, src: '/img/product-02-a-400x525.jpg', name: 'Libero X250', price: 750.00, rate: 4, type: 'scooter', discount:false }); showAlert()" />
         </div>
       </div>
     </div>
@@ -95,4 +95,7 @@
 <script setup>
 import { useCartStore } from "../store/index";
 const store = useCartStore();
+
+import  {useShowAlert} from "../composable/useShowAlert"
+const {showAlert} = useShowAlert();
 </script>
