@@ -106,6 +106,10 @@ export const useCartStore = defineStore('CartStore', () => {
     return cartProducts.value.find((p:any) => p.id == id)
   }
 
+  function clearCart() {
+    cartProducts.value = []
+  }
+
 
   return {
     openCart,
@@ -119,6 +123,7 @@ export const useCartStore = defineStore('CartStore', () => {
     calSum,
     getCountOfCart,
     setToCart,
-    getProductById
+    getProductById,
+    clearCart
   }
 })

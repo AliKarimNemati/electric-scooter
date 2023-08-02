@@ -29,16 +29,11 @@
             <span class="text-gray-600">${{ store.calSum() }}</span>
           </div>
           <div class="text-center">
-            <button
-              class="w-[95%] rounded-md bg-red-700 text-white hover:bg-black p-3 mt-3"
-            >
-              View cart
-            </button>
-            <button
-              class="w-[95%] rounded-md bg-red-700 text-white hover:bg-black p-3 my-3"
+            <NuxtLink to="/checkout"
+              class="w-[95%] rounded-md bg-red-700 text-white hover:bg-black p-3 my-7 inline-block"
             >
               Checkout
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -46,7 +41,7 @@
       <div>
         <p class="text-center flex flex-col justify-center h-[80vh]">No products in the cart.</p>
         <div class="text-center">
-          <PrimaryBtn content="Continue Shopping" />
+          <PrimaryBtn content="Continue Shopping" @click="this.$router.push('/shop'); store.closeCart()"/>
         </div>
       </div>
     </DialogPanel>
