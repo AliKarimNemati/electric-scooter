@@ -4,7 +4,7 @@
 
 ::selection {
     color: white;
-    background: #c93535;
+    background: #b91c1c;
 }
 
 svg {
@@ -73,4 +73,8 @@ body {
     .about-background-img{
         background-attachment: unset;
     }
+}
+
+.router-link-active{
+    color: #b91c1c;
 }

@@ -87,8 +87,8 @@
             <path d="M6 15l5-5-5-5 1-2 7 7-7 7z"></path>
           </svg>
         </NuxtLink>
-
-        <button>
+        <!-- user info btn  -->
+        <button v-if="false">
           <svg
             version="1.1"
             class="w-4 ml-5"
@@ -107,6 +107,17 @@
             <circle cx="60" cy="33.8" r="30"></circle>
           </svg>
         </button>
+        <!-- login & signup btn -->
+        <div class="self-center">
+          <NuxtLink to="/log-in" class="ml-5 font-semibold hover:text-red-700"
+            >Log in</NuxtLink
+          >
+          <NuxtLink
+            to="/sign-up"
+            class="ml-5 font-semibold border-2 border-red-700 hover:bg-red-700 hover:text-white py-1 px-2 rounded-md"
+            >Sign up</NuxtLink
+          >
+        </div>
       </div>
       <button class="text-red-700" @click="store.openCart()">
         <p
@@ -159,7 +170,8 @@
         </div>
         <div class="mt-6 flow-root">
           <div class="divide-y divide-gray-500/10">
-            <button class="mb-5 w-full">
+            <!-- user info btn -->
+            <button class="mb-5 w-full" v-if="false">
               <svg
                 version="1.1"
                 class="w-4 ml-5"
@@ -177,6 +189,22 @@
                 <circle cx="60" cy="33.8" r="30"></circle>
               </svg>
             </button>
+
+            <!-- login & signup btn -->
+            <div class="self-center mb-5">
+              <NuxtLink
+                @click="mobileMenuOpen = false"
+                to="/log-in"
+                class="ml-5 font-semibold hover:text-red-700"
+                >Log in</NuxtLink
+              >
+              <NuxtLink
+                @click="mobileMenuOpen = false"
+                to="/sign-up"
+                class="ml-5 font-semibold border-2 border-red-700 hover:bg-red-700 hover:text-white py-1 px-2 rounded-md"
+                >Sign up</NuxtLink
+              >
+            </div>
             <div class="flex">
               <input
                 type="search"
